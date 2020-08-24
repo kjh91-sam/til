@@ -1,34 +1,57 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int* setMaker(int *arr, int arrsize, int* setSize) {
+	int cnt = 0;
+	int flag = 0;
+
+	int* set = (int*)malloc(sizeof(int) * cnt);
+	for (int i = 0; i < arrsize; i++) {
+		for (int j = 0; j < i; j++)
+			if (arr[i] == arr[j]) {
+				flag = 1;
+				break;
+			}
+		if (flag == 0) {
+			set = (int*)realloc(set, sizeof(int) * (cnt + 1));
+			set[cnt++] = arr[i];
+		}
+		else
+			flag = 0;
+	}
+	*setSize = cnt;
+	return (set);
+}
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes){
 	int** retArr;
-	int	temp[numsSize];
 	int	target = 0;
 	int	cases = 0;
+	int	setSize = 0;
+	int *set = setMaker(nums, numsSize, &setSize);
+	
+	for (int n = 0; n < setSize; n++)
+		printf("%d ", set[n]);
+	printf("\n");
 
-	for (int n = 0; n < numsSize; n++) {
-		for (int m = 0; ; m < sizeof(temp) / sizeof(int); m++) {
-			if (nums[n] ==
-		}
-	}
-
-	for (int i = 0; i < numsSize - 2; i++)
-		for (int j = i + 1; j  < numsSize - 1; j++)
-			for (int k = j + 1; k < numsSize; k++)
-				if ((nums[i] + nums[j] + nums[k]) == target) {
+	for (int i = 0; i < setSize - 2; i++)
+		for (int j = i + 1; j  < setSize - 1; j++)
+			for (int k = j + 1; k < setSize; k++)
+				if ((set[i] + set[j] + set[k]) == target) {
 					cases++;
 					if (cases == 1)
 						retArr = (int **)malloc(sizeof(int*) * cases);
 					else
 						retArr = (int **)realloc(retArr, sizeof(int*) * cases);
-					printf("allocation has successed with i : %d, j : %d, k : %d\n", i, j, k);
-					retArr[cases - 1] = (int *)malloc(sizeof(int) * 3);
-					retArr[cases - 1][0] = nums[i];
-					retArr[cases - 1][1] = nums[j];
-					retArr[cases - 1][2] = nums[k];
+					printf("cases : %d\nallocation has successed with i : %d, j : %d, k : %d\n", cases, i, j, k);
+					*retArr  = (int *)malloc(sizeof(int) * 3);
+					printf("here");
+					(*retArr)[0] = set[i];
+					(*retArr)[1] = set[j];
+					(*retArr)[2] = set[k];
 					*returnColumnSizes = (int *)realloc(*returnColumnSizes, sizeof(int) * cases);
-					(*returnColumnSizes)[cases - 1] = 3;
+					**returnColumnSizes = 3;
+					retArr++;
+					(*returnColumnSizes)++;
 				}
 	*returnSize = cases;
 	return retArr;
