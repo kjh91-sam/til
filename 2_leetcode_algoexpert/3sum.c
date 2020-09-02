@@ -43,12 +43,15 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
 					else
 						retArr = (int **)realloc(retArr, sizeof(int*) * cases);
 					printf("cases : %d\nallocation has successed with i : %d, j : %d, k : %d\n", cases, i, j, k);
-					*retArr  = (int *)malloc(sizeof(int) * 3);
+					retArr[cases - 1]  = (int *)malloc(sizeof(int) * 3);
 					printf("here");
-					(*retArr)[0] = set[i];
-					(*retArr)[1] = set[j];
-					(*retArr)[2] = set[k];
-					*returnColumnSizes = (int *)realloc(*returnColumnSizes, sizeof(int) * cases);
+					retArr[cases - 1][0] = set[i];
+					retArr[cases - 1][1] = set[j];
+					retArr[cases - 1][2] = set[k];
+					if (cases == 1)
+						*returnColumnSizes = (int *)malloc(sizeof(int) * cases);
+					else
+						*returnColumnSizes = (int*)realloc(returnColumnSizes, sizeof(int) * cases);
 					**returnColumnSizes = 3;
 					retArr++;
 					(*returnColumnSizes)++;
