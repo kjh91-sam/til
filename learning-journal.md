@@ -16,3 +16,22 @@
     - `[attr*=value]` : string contains value at least once
     - `[attr operator value i]` : adding *i* before closing bracket does case-insensitive comparison flag
     - `[attr operator value s]` : adding *s* before closing bracket does case-insensitive comparison flag
+
+
+(2021 Oct 19 Tue)
+- **using `<input id="inputId">` with `<label for="inputId">`** to check a state
+  - no need to add an event listener. if you click the label, the checkbox would be checked!
+  - use with css selector like `#inputId ~ .someClass`
+- **css `transition` can have time delay**
+  - `transition: <property> <duration> <timing-function> <delay>;`
+- **`toggle` function can be used for DOMTokenList(like classList)**
+  - returns `false` when removed, returns `true` when added
+- **DOMTokenList methods**
+  - `list.item(idx)`
+  - `list.contains(token)`
+  - `list.add(token1, token2, ..)`
+  - `list.remove(token1, token2, ..)`
+  - `list.replace(oldToken, newToken)`
+  - `list.toggle(token [, force])` : if force set to false, only removal happens. if set to true, only addition happens.
+  - `list.supports(token)` : *experimental*! check if support the feature kind of things
+  - `list.entries()`, `list.forEach(callback [, thisArg])`, `list.keys()`, `list.values()`
