@@ -15,7 +15,9 @@
     - `[attr$=value]` : value is suffix
     - `[attr*=value]` : string contains value at least once
     - `[attr operator value i]` : adding *i* before closing bracket does case-insensitive comparison flag
-    - `[attr operator value s]` : adding *s* before closing bracket does case-insensitive comparison flag
+    - `[attr operator value s]` : adding *s* before closing bracket does case-insensitive comparison flag  
+
+
 
 
 (2021 Oct 19 Tue)
@@ -34,7 +36,9 @@
   - `list.replace(oldToken, newToken)`
   - `list.toggle(token [, force])` : if force set to false, only removal happens. if set to true, only addition happens.
   - `list.supports(token)` : *experimental*! check if support the feature kind of things
-  - `list.entries()`, `list.forEach(callback [, thisArg])`, `list.keys()`, `list.values()`
+  - `list.entries()`, `list.forEach(callback [, thisArg])`, `list.keys()`, `list.values()`  
+
+
 
 (2021 Oct 20 Wed)
 - **How apple get viewport width**
@@ -88,3 +92,20 @@
 - **increment/decrement operator returns the value before operation**
   - ex) `1--` will return 1
 - use `mouseenter/mouseleave` instead of `mouseover/mouseout`
+- mouse leave event for two elements: use counter! [link](https://stackoverflow.com/questions/5018749/how-to-detect-mouseleave-on-two-elements-at-once)
+  ```js
+  var count = 0;
+  $('#myLink, #mySpan').mouseenter(function(){
+      count++;
+      $('#myDiv').show();
+  }).mouseleave(function(){
+      count--;
+      if (!count) {
+          $('#myDiv').hide();
+      }
+  });
+  ```  
+
+
+  (2021 Oct 25 Mon)
+  - 
