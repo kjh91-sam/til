@@ -107,5 +107,20 @@
   ```  
 
 
-  (2021 Oct 25 Mon)
-  - 
+(2021 Oct 26 Tue)
+- [**Three phases of DOM event**](https://ko.javascript.info/bubbling-and-capturing)
+  - capturing > targetting > bubbling (`event.eventPhase`)
+  - **Bubbling** goes child > parent > grandparent (most deeply nested element first). 
+  - **Capturing** goes grandparent > parent > child (most outer element first).
+  - To stop these, use `event.stopPropagation()` (as less as possible).
+  - `event.target` is the most inner element that event happened. To refer to the exact element the event handler was on, use `event.currentTarget` instead.
+- **input element fires `change` event only when it's done not by a code**  
+
+
+(2021 Oct 27 Wed)
+- `innerText` vs `textContent` : innerText returns text from rendered result, while textContent returns literally every document text in the element (before rendered).
+- how to check whether an element has some attribute and only have text node in it : `const arr = []; document.querySelectorAll(':not([data-i18n])').forEach(el=>el.childElementCount == 0 && el.innerText && el.innerText.length > 0 && arr.push(el)); console.log(arr);
+`  
+
+(2021 Oct 29 Fri)
+- element's name can be found with `el.tagName`. it will return all-capitalized tag name like `STYLE` or `SCRIPT`.
